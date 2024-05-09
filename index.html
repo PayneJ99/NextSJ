@@ -7,12 +7,56 @@
     <script type="text/jsx">
       const domNode = document.getElementById('app');
       
-      function Header() {
-        return <h1>Develop. Preview. Ship </h1>;
+      function Header({ title }) {
+        console.log(title);
+        return <h1>{title}</h1>;
+      }
+
+      function Header2(props) {
+        return <h1>{props.title}</h1>;
+      }
+
+      function Header3({ title }) {
+        return <h1>{`${title}`}</h1>;
+      }
+
+      function createTitle(title) {
+        if (title) {
+          return title;
+        } else {
+          return 'Default title';
+        }
+      }
+
+      function Header4({ title }) {
+        return <h1>{title ? title : 'Default Title'}</h1>;
+      }
+       
+      function Header5({ title }) {
+        return <h1>{createTitle(title)}</h1>;
+      }
+      
+      function HomePage() {
+        return ( 
+          <div>
+          <Header title="React"/>
+          <Header title="A new title"/>
+          <Header2 title="React"/>
+          <Header2 title="A new title"/>
+          <Header3 title="React"/>
+          <Header3 title="A new title"/>
+          <Header4 title="React"/>
+          <Header4 title="A new title"/>
+          <Header5 title="React"/>
+          <Header5 title="A new title"/>
+          {/* <Show Default title /> */}
+          <Header5 title=""/>
+        </div>
+        );
       }
       
       const root = ReactDOM.createRoot(app);
-      root.render(<Header />);
+      root.render(<HomePage />);
     </script>
   </body>
 </html>
